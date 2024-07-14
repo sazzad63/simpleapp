@@ -46,58 +46,39 @@ class Dashboard extends StatelessWidget {
         ),
 
         drawer: Drawer(
+          // backgroundColor: Colors.white70,
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-               DrawerHeader(
+               const DrawerHeader(
+                 decoration: BoxDecoration(
+                   color: Color.fromRGBO(0, 100, 100, 1.0),
+                 ),
                   child: Column(
                     children: [
                       SizedBox(
+                        height: 95,
+                        width: 95,
                         child: CircleAvatar(
-                          minRadius: 50,
-                          maxRadius: 50,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Image.asset("assets/images/flutter-icon.png"),
-                          ),
+                          backgroundImage: AssetImage("assets/images/1680441987454.jpeg"),
                         ),
                       ),
-                      const SizedBox(height: 10,),
-                      const Text(
-                        "Sazzad Hossain", style: TextStyle(
+                      SizedBox(height: 10,),
+                      Text(
+                        "Md. Sazzad Hossain", style: TextStyle(
                           fontWeight: FontWeight.bold,
-                        fontSize: 16
+                        color: Colors.white,
+                        fontSize: 18
                       ),)
                     ],
                   ),
               ),
-              Column(
-                children: [
-                  ListTile(
-                    title: const Row(
-                      children: [
-                        Icon(Icons.list),
-                        SizedBox(width: 10,),
-                        Text("Item 1"),
-                      ],
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Dashboard(),
-                            maintainState: false),
-                      );
-                    },
-                  ),
-                ],
-              ),
               ListTile(
                 title: const Row(
                   children: [
-                    Icon(Icons.category),
+                    Icon(Icons.home),
                     SizedBox(width: 10,),
-                    Text("Item 2"),
+                    Text("Home", style: TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),
                 onTap: () {
@@ -109,23 +90,70 @@ class Dashboard extends StatelessWidget {
                   );
                 },
               ),
+              const Divider(),
               ListTile(
                 title: const Row(
                   children: [
-                    Icon(Icons.logout),
+                    Icon(Icons.verified_user),
                     SizedBox(width: 10,),
-                    Text("Logout"),
+                    Text("My Profile", style: TextStyle(fontWeight: FontWeight.bold),),
                   ],
                 ),
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const MyApp(),
+                        builder: (context) => const Dashboard(),
                         maintainState: false),
                   );
                 },
-              )
+              ),
+              const Divider(),
+              ListTile(
+                title: const Row(
+                  children: [
+                    Icon(Icons.supervised_user_circle),
+                    SizedBox(width: 10,),
+                    Text("My Team", style: TextStyle(fontWeight: FontWeight.bold)),
+                  ],
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Dashboard(),
+                        maintainState: false),
+                  );
+                },
+              ),
+              const SizedBox(height: 200,),
+              SizedBox(
+                child: Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MyApp(),
+                              maintainState: false),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                          fixedSize: const Size(200, 50),
+                          elevation: 5,
+                          backgroundColor: Colors.blueAccent,
+                          foregroundColor: Colors.white,
+                          textStyle: const TextStyle(
+                            fontSize: 18,
+                              fontWeight: FontWeight.bold)),
+                      child: const Text(
+                        "Logout",
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -141,7 +169,6 @@ class Dashboard extends StatelessWidget {
             builder: (context) => const Dashboard(),
             maintainState: false),
       );
-      break;
       break;
       case 1: Navigator.push(
         context,
