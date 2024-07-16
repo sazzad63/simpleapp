@@ -6,14 +6,14 @@ import 'package:wc_form_validators/wc_form_validators.dart';
 
 final _formKey = GlobalKey<FormState>();
 
-// String? validateEmail(String? email) {
-//   RegExp emailRegex = RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
-//   final isValidateEmail = emailRegex.hasMatch(email ?? '');
-//   if (!isValidateEmail) {
-//     return 'Please type your valid email.';
-//   }
-//   return null;
-// }
+String? validateEmail(String? email) {
+  RegExp emailRegex = RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
+  final isValidateEmail = emailRegex.hasMatch(email ?? '');
+  if (!isValidateEmail) {
+    return 'Please type your valid email.';
+  }
+  return null;
+}
 
 void main() {
   runApp(const MaterialApp(
@@ -52,10 +52,7 @@ class MyApp extends StatelessWidget {
                           labelText: 'Enter username'),
                       // validator: (uname)=>uname!.isEmpty? 'Please type your username':null,
                       // validator: validateEmail,
-                      validator: Validators.compose([
-                        Validators.required('Email is required'),
-                        Validators.email('Invalid email address'),
-                      ]),
+                      validator: validateEmail,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
                   ),
